@@ -5,9 +5,8 @@
   --cor-1P: #3445af;
   --cor-2S: #4790eb;
   --cor-3T: #46ebdc;
-  --cor-1P-hover: #3e52d4a1;
+  --cor-1P-hover: #293bb17b;
   --cor-2S-hover: #0073ffa4;
-  --cor-letra-rodape: #525252;
   --cor-divisa-header: #17008034;
   --fonte-01principal: 'Arial', 'Calibre';
   --fonte-02menu: 'Arial', 'Calibre';
@@ -150,15 +149,21 @@ header h1 {
 #sectionMain input:not(:placeholder-shown) + label {
   transform: translateY(-150%) scale(0.85);
 }
-#sectionMain button {
+#sectionMain #addMateria {
   padding: 8px;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   background-color: var(--cor-1P);
   color: #fff;
   border-radius: 10px;
   border: 2px solid black;
   cursor: pointer;
 }
+
+#sectionMain #addMateria:hover{
+  background-color: var(--cor-1P-hover);
+}
+
 #sectionMain button:hover {
   background-color: var(--cor-1P-hover);
 }
