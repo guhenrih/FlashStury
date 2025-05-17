@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>FlashStudy</title>
+</head>
+<body>
+    <header>
+        <!--Menu Hamburguer Para Mobile-->
+        <span class="menu-mobile" onclick="acionarMenu()">☰</span>
+
+        <h1 id="tituloPrincipal">FlashStudy</h1>
+    </header>
+
+    <!--Opições da navegação-->
+    <nav id="MenuDeNavegacao">
+        <ul class="navHan">
+            <li><a href="#" class="navHan">Tema</a></li>
+            <li><a href="#" class="navHan">Ajuda</a></li>
+            <li><a href="#" class="navHan">Contato</a></li>
+            <li><a href="#" class="navHan">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <!--Menciona e mostra a Sequência-->
+    <section id="ApresentaSequencia">
+        <h3>SUA SEQUÊNCIA DE ESTUDOS:</h3>
+    
+        <h2>🎯 10 DIAS 🎯</h2>
+    </section>
+
+    <!--Seção principal que adiciona os botões da matéria-->
+    <section id="sectionMain">
+        <h3>Crie seus FLASHCARDS por matéria!</h3>
+
+        <div>
+            <label for="NomeMateria">Nova Matéria:</label>
+            <input type="text" name="Matéria" id="NomeMatéria">
+        </div>
+
+        <button type="submit" onclick="addMateria()">Adicionar</button>
+
+        <!--Button de nova matéria adicionado via JS-->
+        <div class="materias-container" id="materias-container"></div>
+    </section>
+    <footer>
+        <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
+    </footer>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashStudy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        .materias-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .materia-btn {
+            padding: 8px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: fit-content;
+        }
+
+        .materia-btn:hover {
+            background-color: #1976D2;
+        }
+
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            width: 250px;
+        }
+
+        #adicionar-btn {
+            background-color: #4CAF50;
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FlashStudy</h1>
+    </header>
+    
+    <section>
+        <h3>SUA SEQUÊNCIA DE ESTUDOS:</h3>
+    </section>
+
+    <section>
+        <h2>***10 DIAS***</h2>
+    </section>
+
+    <section class="input-section">
+        <h3>Crie seus FLASHCARDS por matéria</h3>
+        <label for="NomeMateria">Nome da Matéria:</label>
+        <input type="text" name="Matéria" placeholder="Digite o nome da matéria" id="NomeMateria">
+        <button type="button" onclick="addMateria()" id="adicionar-btn">Adicionar</button>
+        
+        <!-- Container para os botões das matérias ABAIXO do input -->
+        <div class="materias-container" id="materias-container"></div>
+    </section>
+
+    <footer>
+        <p>&copy; <a href="#">FlashStudy By Gustavo</a></p>
+    </footer>
+
+    <script>
+        function addMateria() {
+            const input = document.getElementById('NomeMateria');
+            const container = document.getElementById('materias-container');
+            
+            if (input.value.trim() === '') {
+                alert('Por favor, digite o nome da matéria!');
+                return;
+            }
+
+            // Cria novo botão
+            const novaMateria = document.createElement('button');
+            novaMateria.className = 'materia-btn';
+            novaMateria.textContent = input.value;
+            
+            // Função de exemplo para os botões
+            novaMateria.onclick = function() {
+                alert(`Abrindo flashcards de: ${this.textContent}`);
+            };
+            
+            // Adiciona ao container ABAIXO do input
+            container.appendChild(novaMateria);
+            
+            // Limpa o input
+            input.value = '';
+        }
+    </script>
+</body>
+</html>

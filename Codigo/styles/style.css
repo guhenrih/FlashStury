@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+:root {
+  --cor-1P: #3445af;
+  --cor-2S: #4790eb;
+  --cor-3T: #46ebdc;
+  --cor-1P-hover: #3e52d4;
+  --cor-letra-rodape: #525252;
+  --cor-divisa-header: #17008083;
+  --fonte-01principal: 'Arial', 'Calibre';
+  --fonte-02menu: 'Arial', 'Calibre';
+}
+
+/* Reset básico*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient(120deg, var(--cor-1P), var(--cor-2S), var(--cor-3T));
+    height: 100%;
+}
+
+
+/****************************************/
+/*             CSS DO HEADER            */
+/****************************************/
+header{
+    display: flex;            
+    align-items: center;
+    height: 60px;
+    background-color: #3445af;
+    border-bottom:2px solid var(--cor-divisa-header);
+}
+
+header h1{
+    font-family: var(--fonte-01principal);
+    color: white;
+    margin: 0 auto;
+}
+
+.menu-mobile{
+    padding: 0 10px;
+    font-weight: bolder;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+#MenuDeNavegacao{
+    background-color: var(--cor-1P);
+    display: none;
+    justify-content: center;
+}
+
+#menuDeNavegacao.ativo {
+    display: flex; /* Exibe o menu quando a classe 'ativo' é adicionada */
+}
+
+#MenuDeNavegacao li{
+    list-style: none;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--cor-divisa-header);
+    width: 100vh;
+}
+
+#MenuDeNavegacao li:hover{
+    background-color: var(--cor-1P-hover);
+}
+
+#MenuDeNavegacao a{
+    color: #FFF;
+    font-family: var(--fonte-02menu);
+    text-decoration: none;
+}
+
+
+
+/****************************************/
+/*          CSS SECTION SEQUÊNCIA       */
+/****************************************/
+
+#ApresentaSequencia{
+    background-color: #FFF;
+    width: 75vh;
+    height: 25vh;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 3vh;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#ApresentaSequencia h3{
+    display: flex;
+    text-align: center;
+    font-family: var(--fonte-01principal);
+    font-size: 3vh;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+#ApresentaSequencia h2{
+    text-align: center;
+    font-size: 10vh;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+/****************************************/
+/*          CSS SECTION PRINCIPAL       */
+/****************************************/
+
+#sectionMain{
+    background-color: #FFF;
+    width: 75vh;
+    height: 70vh;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 3vh;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#sectionMain h3{
+    margin-top: 3vh;    
+    font-family: var(--fonte-01principal);
+}
+
+#sectionMain div{
+    margin-top: 8.5vh;
+    position: relative;
+    align-items: center;
+}
+
+#sectionMain label{
+    position: absolute;
+    top: -0.5rem;
+    left: 0.75rem;
+    transition: transform 0.2 ease, font-size 0.2s ease;
+    background-color: #fff;
+    padding: 0 0.25rem;
+    pointer-events: none;
+}
+
+#sectionMain input{
+    width: 100%;
+    padding: 1rem 0.75rem 0.25rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+
+#sectionMain input:focus + label,
+#sectionMain input:not(:placeholder-shown) + label{
+    transform: translateY(-150%) scale(0.85);
+}
+
+#sectionMain button{
+    padding: 8px;
+    margin-top: 1vh;
+    background-color: var(--cor-1P);
+    border-radius: 10px;
+    border: 2px solid black ;
+}
+
+
+/****************************************/
+/*               CSS FOOTER             */
+/****************************************/
+
+footer{
+    display: flex;
+    align-items: center;
+    margin-top: 8.5vh;
+    background-color: var(--cor-3T);
+}
+
+footer p{
+    margin: 0 auto;
+}
+
+footer p a{
+    color: var(--cor-letra-rodape);
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
