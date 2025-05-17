@@ -5,7 +5,7 @@
   --cor-1P: #3445af;
   --cor-2S: #4790eb;
   --cor-3T: #46ebdc;
-  --cor-1P-hover: #3e52d4;
+  --cor-1P-hover: #3e52d4a1;
   --cor-letra-rodape: #525252;
   --cor-divisa-header: #17008083;
   --fonte-01principal: 'Arial', 'Calibre';
@@ -66,7 +66,7 @@ header h1 {
   padding: 8px;
   text-align: center;
   border: 1px solid var(--cor-divisa-header);
-  width: 100vh;
+  width: 120vh;
 }
 #MenuDeNavegacao li:hover {
   background-color: var(--cor-1P-hover);
@@ -182,37 +182,82 @@ footer p a {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* TABLET: >600x - design original */
-@media (min-width: 520px) {
+/* TABLET: >698px - design original */
+@media (min-width: 698px) {
+
   #MenuDeNavegacao {
+    background-color: transparent;
+    margin-top: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background: none;
+    
   }
+
+  #MeneNavegacao ul{
+    display: block;
+  }
+
+  #MenuDeNavegacao li{
+    height: 15px;
+    display: inline; 
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+
+  #MenuDeNavegacao li:hover{
+    background-color: var(--cor-1P-hover);
+    border-radius: 70px;
+    border: 1px solid black;
+
+  }
+
+  .navHan{
+    margin: 0 auto;
+  }
+
   .menu-mobile {
     display: none;
   }
 
   #ApresentaSequencia {
-    width: 75vh;
+    width: 90vh;
     height: 25vh;
     margin-top: 3vh;
     padding: 0;
     flex-direction: column;
     justify-content: center;
   }
+
   #ApresentaSequencia h3 {
     font-size: 3vh;
   }
+
   #ApresentaSequencia h2 {
     font-size: 10vh;
   }
+
   #sectionMain {
-    width: 75vh;
+    width: 90vh;
     height: 70vh;
     margin-top: 3vh;
     padding: 0;
+
+    display: flex;
+    align-items: center;
+  }
+
+  #formMateria{
+    display: flex;
+  }
+
+  #NomeMateria{
+    margin: 0 auto;
+    max-width: 300px;
+  }
+
+  #labelMateria{
+    text-align: center;
+    margin-left: 120px;
   }
 }
 
