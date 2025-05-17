@@ -6,8 +6,9 @@
   --cor-2S: #4790eb;
   --cor-3T: #46ebdc;
   --cor-1P-hover: #3e52d4a1;
+  --cor-2S-hover: #0073ffa4;
   --cor-letra-rodape: #525252;
-  --cor-divisa-header: #17008083;
+  --cor-divisa-header: #17008034;
   --fonte-01principal: 'Arial', 'Calibre';
   --fonte-02menu: 'Arial', 'Calibre';
 }
@@ -40,6 +41,7 @@ header {
   padding: 0 1rem;
   background-color: var(--cor-1P);
   border-bottom: 2px solid var(--cor-divisa-header);
+  box-shadow: 1px 1px 10px 1px black;
 }
 header h1 {
   color: #fff;
@@ -89,6 +91,7 @@ header h1 {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  box-shadow: 1px 2px 10px 1px black;
 }
 #ApresentaSequencia h3 {
   font-family: var(--fonte-01principal);
@@ -112,6 +115,7 @@ header h1 {
   width: 90%;
   margin: 2rem auto;
   border-radius: 10px;
+  box-shadow: 1px 2px 10px 1px black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,6 +163,30 @@ header h1 {
   background-color: var(--cor-1P-hover);
 }
 
+#container-materias{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-materia{
+  display: flex;
+}
+
+.button-materias{
+  border-radius: 10px;
+  border: 1px solid #000;
+  background-color: var(--cor-2S);
+  display: flex;
+  margin-bottom: 15px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.button-materias:hover{
+  background-color: var(--cor-2S-hover);
+}
+
 /****************************************/
 /*               CSS FOOTER             */
 /****************************************/
@@ -166,7 +194,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.2rem;
   background-color: var(--cor-3T);
   margin-top: auto;
 }
@@ -238,7 +266,6 @@ footer p a {
 
   #sectionMain {
     width: 90vh;
-    height: 70vh;
     margin-top: 3vh;
     padding: 0;
 
