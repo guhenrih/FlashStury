@@ -66,7 +66,7 @@ header h1 {
   padding: 8px;
   text-align: center;
   border: 1px solid var(--cor-divisa-header);
-  width: 100%;
+  width: 100vh;
 }
 #MenuDeNavegacao li:hover {
   background-color: var(--cor-1P-hover);
@@ -182,8 +182,8 @@ footer p a {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* TABLET: >=768px - design original */
-@media (min-width: 768px) {
+/* TABLET: >600x - design original */
+@media (min-width: 520px) {
   #MenuDeNavegacao {
     display: flex;
     flex-direction: row;
@@ -193,13 +193,7 @@ footer p a {
   .menu-mobile {
     display: none;
   }
-  #MenuDeNavegacao li {
-    border: none;
-    width: auto;
-  }
-  #MenuDeNavegacao a {
-    padding: 0 1rem;
-  }
+
   #ApresentaSequencia {
     width: 75vh;
     height: 25vh;

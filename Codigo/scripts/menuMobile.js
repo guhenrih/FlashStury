@@ -1,19 +1,22 @@
 function acionarMenu() {
-        // Seleciona o botão e o menu
-            const botao = document.querySelector('.menu-mobile');
-            const menu  = document.getElementById('menuDeNavegacao');
-  
-        // Se não encontrar algum dos elementos, aborta e loga erro
-        if (!botao || !menu) {
-            console.error('Elemento .menu-mobile ou #menuDeNavegacao não encontrado.');
-            return;
-        }
+  const botao = document.querySelector('.menu-mobile');
+  const menu = document.getElementById('MenuDeNavegacao');
 
-        // Decide se o menu deve abrir ou fechar
-        const abrir = !menu.classList.contains('ativo');
+  if (!botao || !menu) {
+    console.error('Elemento .menu-mobile ou #MenuDeNavegacao não encontrado.');
+    return;
+  }
 
-        // Alterna a classe e o atributo aria-expanded
-        menu.classList.toggle('ativo', abrir);
-        botao.setAttribute('aria-expanded', abrir);
-        }
+  const abrir = !menu.classList.contains('ativo');
+  menu.classList.toggle('ativo', abrir);
+  botao.setAttribute('aria-expanded', abrir);
 
+  // Adiciona ouvintes de clique aos links do menu para fechar o menu ao serem clicados
+  const links = menu.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('ativo');
+      botao.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
