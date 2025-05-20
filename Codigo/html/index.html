@@ -10,11 +10,10 @@
     <header>
         <!--Menu Hamburguer Para Mobile-->
         <span class="menu-mobile" onclick="acionarMenu()">☰</span>
-
         <h1 id="tituloPrincipal">FlashStudy</h1>
     </header>
 
-    <!--Opições da navegação-->
+    <!--Opções da navegação-->
     <nav id="MenuDeNavegacao">
         <ul class="navHan">
             <li><a href="#" class="navHan">Tema</a></li>
@@ -27,7 +26,6 @@
     <!--Menciona e mostra a Sequência-->
     <section id="ApresentaSequencia">
         <h3>SUA SEQUÊNCIA DE ESTUDOS:</h3>
-    
         <h2>🎯 10 DIAS 🎯</h2>
     </section>
 
@@ -40,16 +38,23 @@
             <input type="text" name="Matéria" id="NomeMateria">
         </div>
 
-        <button type="submit"  id="addMateria" onclick="addMateria()">Adicionar</button>
+        <button type="submit" id="addMateria" onclick="addMateria()">Adicionar</button>
 
-        <!--Button de nova matéria adicionado via JS-->
+        <!--Container onde os botões-matérias serão inseridos-->
         <section id="materias-container">
-            <button class="button-materias" >TEMPORARIO</button>
+            
         </section>
     </section>
+
     <footer>
         <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
     </footer>
+
     <script src="../scripts/menuMobile.js"></script>
+
+    <!-- Inclusão de armazenamento.js para gerenciar localStorage -->
+    <script src="../scripts/armazenamento.js" defer></script>
+    <!-- Inclusão de materias.js para criar/excluir matérias -->
+    <script src="../scripts/materias.js" defer></script>
 </body>
 </html>
