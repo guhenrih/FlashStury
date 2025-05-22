@@ -4,69 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="../styles/style-flashCards.css">
   <title>Flashcards - Matéria</title>
 </head>
 <body>
   <header>
-    <button class="menu-mobile" onclick="acionarMenu()">☰</button>
+    <!--Menu Hamburguer Para Mobile-->
+    <span class="menu-mobile" onclick="acionarMenu()">☰</span>
     <h1 id="tituloPrincipal">FlashStudy</h1>
   </header>
-
+  <!--Opções da navegação-->
   <nav id="MenuDeNavegacao">
     <ul class="navHan">
-      <li><a href="#" class="navHan">Início</a></li>
-      <li><a href="#" class="navHan">Minhas Matérias</a></li>
+      <li><a href="../html/index.html" class="navHan">Inicio</a></li>
+      <li><a href="#" class="navHan">Tema</a></li>
       <li><a href="#" class="navHan">Ajuda</a></li>
+      <li><a href="#" class="navHan">Contato</a></li>
+      <li><a href="#" class="navHan">Sobre</a></li>
     </ul>
   </nav>
 
-  <main>
-    <!-- Exibe o nome da matéria atual -->
-    <section id="flashcardsContainer" style="text-align: center; margin-top: 2rem;">
-      <h2 id="tituloMateria">Matéria:</h2>
-      <!-- Futuramente aqui virão os flashcards -->
-      <button id="btnVoltar" style="
-        margin-top: 2rem;
-        padding: 0.75rem 1.5rem;
-        background-color: var(--primary-color);
-        color: var(--primary-text-color);
-        border: none;
-        border-radius: 0.375rem;
-        cursor: pointer;
-      ">
-        ← Voltar
-      </button>
+  <section id="sectionMain">
+    <section id="estudos">
+      <span class="mudarFlashcard">‹</span>
+      <section  id="Flashcards"></section>
+      <span class="mudarFlashcard">›</span>
     </section>
-  </main>
+  </section>
 
   <footer>
-    <p>&copy; 2025 FlashStudy. Todos os direitos reservados.</p>
+    <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
   </footer>
-
-  <script src="./scripts/menuMobile.js"></script>
-  <script>
-    // Lê ?materia=... da URL e exibe no <h2 id="tituloMateria">
-    document.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const materia = params.get('materia');
-      const tituloElem = document.getElementById('tituloMateria');
-      if (materia) {
-        const nome = decodeURIComponent(materia);
-        tituloElem.textContent = `Matéria: ${nome}`;
-      } else {
-        tituloElem.textContent = 'Nenhuma matéria selecionada.';
-      }
-
-      // Botão “Voltar”: usa history.back() ou redireciona para index.html se não houver histórico
-      const btnVoltar = document.getElementById('btnVoltar');
-      btnVoltar.addEventListener('click', () => {
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          window.location.href = 'index.html';
-        }
-      });
-    });
-  </script>
+  <script src="../scripts/menuMobile.js"></script>
 </body>
 </html>

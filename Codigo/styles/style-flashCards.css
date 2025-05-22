@@ -1,0 +1,143 @@
+/* Mobile-First Responsividade Mantendo Design Original */
+@charset "UTF-8";
+
+:root {
+  --cor-1P: #3445af;
+  --cor-2S: #4790eb;
+  --cor-3T: #46ebdc;
+  --cor-1P-hover: #293bb17b;
+  --cor-2S-hover: #0073ffa4;
+  --cor-divisa-header: #17008034;
+  --fonte-01principal: 'Arial', 'Calibre';
+  --fonte-02menu: 'Arial', 'Calibre';
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+body {
+  background: linear-gradient(120deg, var(--cor-1P), var(--cor-2S), var(--cor-3T));
+  font-family: var(--fonte-01principal);
+  display: flex;
+  flex-direction: column;
+}
+
+/****************************************/
+/*             CSS DO HEADER            */
+/****************************************/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 1rem;
+  background-color: var(--cor-1P);
+  border-bottom: 2px solid var(--cor-divisa-header);
+  box-shadow: 1px 1px 10px 1px black;
+}
+header h1 {
+  color: #fff;
+  margin: 0 auto;
+}
+.menu-mobile {
+  padding: 0 10px;
+  font-weight: bolder;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+#MenuDeNavegacao {
+  background-color: var(--cor-1P);
+  display: none;
+  justify-content: center;
+}
+#MenuDeNavegacao.ativo {
+  display: flex;
+}
+#MenuDeNavegacao li {
+  list-style: none;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid var(--cor-divisa-header);
+  width: 120vh;
+}
+#MenuDeNavegacao li:hover {
+  background-color: var(--cor-1P-hover);
+}
+#MenuDeNavegacao a {
+  color: #FFF;
+  font-family: var(--fonte-02menu);
+  text-decoration: none;
+}
+
+
+/****************************************/
+/*          CSS SECTION PRINCIPAL       */
+/****************************************/
+#sectionMain {
+  background-color: #FFF;
+  width: 90%;
+  margin: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px 1px black;
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  padding: 1rem;
+}
+
+#estudos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    background-color: #46ebdc;
+    padding:30px;
+}
+
+#Flashcards{
+    background-color: #000;
+    padding: 130px 100px;
+    max-height: 200px;
+    max-height: 400px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.mudarFlashcard{
+    font-weight: bolder;
+    font-size: 120px;
+    transform: translateY(-10%); /* move o próprio elemento 50% para cima */
+}
+
+
+/****************************************/
+/*               CSS FOOTER             */
+/****************************************/
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  background-color: var(--cor-3T);
+  margin-top: auto;
+}
+footer p {
+  margin: 0;
+}
+footer p a {
+  color: var(--cor-letra-rodape);
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}

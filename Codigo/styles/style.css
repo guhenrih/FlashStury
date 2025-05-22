@@ -168,28 +168,70 @@ header h1 {
   background-color: var(--cor-1P-hover);
 }
 
-#container-materias{
+/* Regras antigas de container removidas ou refatoradas */
+/* Novo container para empilhar matérias */
+#materias-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+/* Cada retângulo que envolve os botões */
+.materia-item {
+  display: flex;
   align-items: center;
-}
-
-#container-materia{
-  display: flex;
-}
-
-.button-materias{
-  border-radius: 10px;
-  border: 1px solid #000;
-  background-color: var(--cor-2S);
-  display: flex;
-  margin-bottom: 15px;
+  justify-content: space-evenly;
   padding: 10px;
-  justify-content: center;
+  max-width: 45%;
+  border: 2px solid var(--cor-divisa-header);
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  flex: 1 1 calc(45% - 1rem);
 }
 
-.button-materias:hover{
-  background-color: var(--cor-2S-hover);
+/* Estilo do botão de acesso à matéria */
+.materia-atalho {
+  flex-grow: 1;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--cor-1P);
+}
+
+/* Estilo do botão de exclusão */
+.excluir-materia {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: red;
+}
+
+/* Hover opcional para o atalho */
+.materia-atalho:hover {
+  color: var(--cor-2S);
+}
+
+/* Estilo do botão de exclusão */
+.excluir-materia {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #C53030;
+  margin-left: 1rem;
+}
+
+/* Hover opcional para exclusão */
+.excluir-materia:hover {
+  color: #a02828;
 }
 
 /****************************************/
@@ -217,41 +259,32 @@ footer p a {
 
 /* TABLET: >698px - design original */
 @media (min-width: 698px) {
-
   #MenuDeNavegacao {
     background-color: transparent;
     margin-top: 10px;
     display: flex;
-    
   }
-
   #MeneNavegacao ul{
     display: block;
   }
-
   #MenuDeNavegacao li{
     height: 15px;
-    display: inline; 
+    display: inline;
     padding-left: 60px;
     padding-right: 60px;
     border: none;
   }
-
   #MenuDeNavegacao li:hover{
     background-color: var(--cor-1P-hover);
     border-radius: 70px;
     border: 1px solid black;
-
   }
-
   .navHan{
     margin: 0 auto;
   }
-
   .menu-mobile {
     display: none;
   }
-
   #ApresentaSequencia {
     width: 90vh;
     height: 25vh;
@@ -260,33 +293,26 @@ footer p a {
     flex-direction: column;
     justify-content: center;
   }
-
   #ApresentaSequencia h3 {
     font-size: 3vh;
   }
-
   #ApresentaSequencia h2 {
     font-size: 10vh;
   }
-
   #sectionMain {
     width: 90vh;
     margin-top: 3vh;
     padding: 0;
-
     display: flex;
     align-items: center;
   }
-
   #formMateria{
     display: flex;
   }
-
   #NomeMateria{
     margin: 0 auto;
     max-width: 300px;
   }
-
   #labelMateria{
     text-align: center;
     margin-left: 120px;
