@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="./styles/style.css" />
   <link rel="stylesheet" href="../styles/style-flashCards.css">
+  <link rel="stylesheet" href="../styles/style-addFlashcards.css">
   <title>Flashcards - Matéria</title>
 </head>
 <body>
@@ -24,17 +24,37 @@
     </ul>
   </nav>
 
-  <section id="sectionMain">
+  <section id="sectionAddFlashcards">
+
+  </section>
+
+  <section class="sectionMain">
+    <h2>Matéria</h2>
     <section id="estudos">
       <span class="mudarFlashcard">‹</span>
-      <section  id="Flashcards"></section>
+      <section  id="Flashcards1">
+        <p id="pergunta">Pergunta</p>
+        <p id="conteudo">conteudo</p>
+      </section>
+      <section  id="Flashcards2">
+        <p id="resposta">resposta</p>
+      </section>
       <span class="mudarFlashcard">›</span>
     </section>
+    <button id="excluir-flashcards">Excluir Flashcards</button>
+    <button id="addFlashcards" onclick="addFlashcards()">Adicionar Flashcards</button>
+  </section>
+  <section class="sectionMain" id="addFlashcads">
+    <div class="form-group">
+      <label id="input-label" for="">Pergunta</label>
+      <input id="input-pergunta"type="text">
+    </div>
   </section>
 
   <footer>
     <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
   </footer>
   <script src="../scripts/menuMobile.js"></script>
+  <script src="../scripts/addFlascards.js"></script>
 </body>
 </html>

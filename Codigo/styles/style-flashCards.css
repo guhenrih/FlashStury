@@ -78,20 +78,27 @@ header h1 {
   text-decoration: none;
 }
 
-
 /****************************************/
 /*          CSS SECTION PRINCIPAL       */
 /****************************************/
-#sectionMain {
+.sectionMain {
   background-color: #FFF;
   width: 90%;
   margin: 2rem auto;
   border-radius: 10px;
   box-shadow: 1px 2px 10px 1px black;
-  display: flex;
-  /*flex-direction: column;*/
+  display: inline;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
   align-items: center;
   padding: 1rem;
+}
+
+h2{
+    font-family: var(--fonte-01principal);
+    font-size: 40px;
+    text-align: center;
 }
 
 #estudos{
@@ -99,17 +106,58 @@ header h1 {
     justify-content: center;
     align-items: center;
     margin:auto;
-    background-color: #46ebdc;
+    background-color: #ffffff;
     padding:30px;
+    position: relative;
 }
 
-#Flashcards{
+#Flashcards1{
+    display: none;
     background-color: #000;
     padding: 130px 100px;
-    max-height: 200px;
-    max-height: 400px;
+    max-height: 20%;
+    max-height: 20%;
     margin: 20px;
     border-radius: 10px;
+}
+
+#Flashcards2{
+    display: block;
+    background-color: #000;
+    padding: 130px 100px;
+    max-height: 20%;
+    max-height: 20%;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#pergunta{
+    color: #fff;
+    font-size: 15px;
+}
+#resposta{
+    color: #fff;
+    font-size: 15px;
+}
+
+#conteudo{
+    color: #fff;
+    transform: translateY(1100%); /* move o próprio elemento 50% para cima */
+    font-size: 10px;
+    text-align: center;
+}
+
+.mudarFlashcard{
+    color: #484848;
+    font-weight: bolder;
+    font-size: 120px;
+    margin: 0;
+    transform: translateY(-10%); /* move o próprio elemento 50% para cima */
+}
+
+.mudarFlashcard:hover{
+    color: #000872;
+    cursor: pointer;
 }
 
 .mudarFlashcard{
@@ -117,6 +165,29 @@ header h1 {
     font-size: 120px;
     transform: translateY(-10%); /* move o próprio elemento 50% para cima */
 }
+
+#excluir-flashcards{
+    background-color: rgba(255, 0, 0, 0.381);
+    border: 3px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#excluir-flashcards:hover{
+    background-color: rgba(255, 0, 0, 0.664);
+}
+
+#addFlashcards{
+    background-color: rgba(0, 149, 2, 0.381);
+    border: 3px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#addFlashcards:hover{
+    background-color: rgba(0, 149, 2, 0.664);
+}
+
 
 
 /****************************************/
