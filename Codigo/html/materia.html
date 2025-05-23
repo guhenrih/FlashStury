@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="../styles/style-flashCards.css">
-  <link rel="stylesheet" href="../styles/style-addFlashcards.css">
+  <link rel="stylesheet" href="../styles/style-flashCards.css" />
   <title>Flashcards - Matéria</title>
 </head>
 <body>
   <header>
-    <!--Menu Hamburguer Para Mobile-->
+    <!-- Menu Hamburguer Para Mobile -->
     <span class="menu-mobile" onclick="acionarMenu()">☰</span>
     <h1 id="tituloPrincipal">FlashStudy</h1>
   </header>
-  <!--Opções da navegação-->
+  <!-- Opções da navegação -->
   <nav id="MenuDeNavegacao">
     <ul class="navHan">
-      <li><a href="../html/index.html" class="navHan">Inicio</a></li>
+      <li><a href="index.html" class="navHan">Início</a></li>
       <li><a href="#" class="navHan">Tema</a></li>
       <li><a href="#" class="navHan">Ajuda</a></li>
       <li><a href="#" class="navHan">Contato</a></li>
@@ -24,37 +23,174 @@
     </ul>
   </nav>
 
-  <section id="sectionAddFlashcards">
-
-  </section>
-
+  <!-- Título dinâmico da matéria -->
   <section class="sectionMain">
-    <h2>Matéria</h2>
-    <section id="estudos">
-      <span class="mudarFlashcard">‹</span>
-      <section  id="Flashcards1">
-        <p id="pergunta">Pergunta</p>
-        <p id="conteudo">conteudo</p>
-      </section>
-      <section  id="Flashcards2">
-        <p id="resposta">resposta</p>
-      </section>
-      <span class="mudarFlashcard">›</span>
-    </section>
-    <button id="excluir-flashcards">Excluir Flashcards</button>
-    <button id="addFlashcards" onclick="addFlashcards()">Adicionar Flashcards</button>
+    <h2 id="tituloMateria">Matéria</h2>
   </section>
-  <section class="sectionMain" id="addFlashcads">
-    <div class="form-group">
-      <label id="input-label" for="">Pergunta</label>
-      <input id="input-pergunta"type="text">
+
+  <!-- Seção de navegação entre flashcards -->
+  <section class="sectionMain">
+    <h3>Seus Flashcards</h3>
+    <section id="estudos">
+      <span class="mudarFlashcard" id="prevFlash">‹</span>
+      
+      <!-- NOVA ESTRUTURA DO FLASHCARD COM “flip” -->
+      <div class="card" id="flashcard-container">
+        <div class="card-inner" id="flashcard-inner">
+          <!-- Frente (pergunta) -->
+          <div class="card-face card-front">
+            <p id="perguntaExibida">Ainda não há flashcards.</p>
+          </div>
+          <!-- Verso (resposta) -->
+          <div class="card-face card-back">
+            <p id="respostaExibida"></p>
+          </div>
+        </div>
+      </div>
+      
+      <span class="mudarFlashcard" id="nextFlash">›</span>
+    </section>
+    <div style="margin-top: 1rem;">
+      <button id="excluir-flashcards">Excluir Flashcard Atual</button>
     </div>
+  </section>
+
+  <!-- Formulário para adicionar novo flashcard -->
+  <section class="sectionMain" id="addFlashSection">
+    <h3>Adicionar Novo Flashcard</h3>
+    <div class="form-group">
+      <label id="label-pergunta" for="input-pergunta">Pergunta</label>
+      <input type="text" id="input-pergunta" placeholder="Digite a pergunta" />
+    </div>
+    <div class="form-group" style="margin-top: 1rem;">
+      <label id="label-resposta" for="input-resposta">Resposta</label>
+      <input type="text" id="input-resposta" placeholder="Digite a resposta" />
+    </div>
+    <button id="addFlashcards" onclick="addFlashcards()">
+      Adicionar Flashcard
+    </button>
   </section>
 
   <footer>
     <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
   </footer>
+
+  <!-- Scripts -->
   <script src="../scripts/menuMobile.js"></script>
-  <script src="../scripts/addFlascards.js"></script>
+  <script>
+    // Array que armazena todos os flashcards atuais (objeto com { pergunta, resposta })
+    let flashcards = [];
+    let indiceAtual = 0;
+
+    // Ao carregar a página, definimos título da matéria e inicializamos visualização
+    window.onload = function () {
+      const tituloMateria = document.getElementById("tituloMateria");
+      const nomeMateria =
+        sessionStorage.getItem("materiaSelecionada") || "Matéria";
+      tituloMateria.textContent = nomeMateria;
+
+      // Inicialmente esconde a área de flashcards se não houver nenhum
+      atualizarVisualizacao();
+
+      // Evento de clique no card para fazer “flip”
+      const container = document.getElementById("flashcard-container");
+      container.addEventListener("click", () => {
+        if (flashcards.length === 0) return;
+        container.classList.toggle("is-flipped");
+      });
+    };
+
+    // Função para adicionar novo flashcard no array e atualizar a tela
+    function addFlashcards() {
+      const inputPerg = document.getElementById("input-pergunta");
+      const inputResp = document.getElementById("input-resposta");
+      const pergunta = inputPerg.value.trim();
+      const resposta = inputResp.value.trim();
+
+      if (!pergunta || !resposta) {
+        alert("Por favor, preencha pergunta e resposta.");
+        return;
+      }
+
+      flashcards.push({ pergunta, resposta });
+      // Se for o primeiro flashcard, mostra direto
+      indiceAtual = flashcards.length - 1;
+      inputPerg.value = "";
+      inputResp.value = "";
+
+      // Assegura que, ao inserir um novo card, ele comece virado para a frente
+      const container = document.getElementById("flashcard-container");
+      container.classList.remove("is-flipped");
+
+      atualizarVisualizacao();
+    }
+
+    // Excluir o flashcard que está sendo exibido
+    document
+      .getElementById("excluir-flashcards")
+      .addEventListener("click", function () {
+        if (flashcards.length === 0) {
+          alert("Não há flashcards para excluir.");
+          return;
+        }
+
+        if (
+          confirm(
+            `Deseja realmente excluir o flashcard:\n\n"${flashcards[indiceAtual].pergunta}"?`
+          )
+        ) {
+          flashcards.splice(indiceAtual, 1);
+          if (indiceAtual >= flashcards.length) {
+            indiceAtual = flashcards.length - 1;
+          }
+          // Toda vez que remover, voltamos à frente do card
+          document.getElementById("flashcard-container").classList.remove("is-flipped");
+          atualizarVisualizacao();
+        }
+      });
+
+    // Navegar para o próximo flashcard
+    document.getElementById("nextFlash").addEventListener("click", function () {
+      if (flashcards.length <= 1) return;
+      indiceAtual = (indiceAtual + 1) % flashcards.length;
+      // Toda vez que mudar de card, voltamos para frente
+      document.getElementById("flashcard-container").classList.remove("is-flipped");
+      atualizarVisualizacao();
+    });
+
+    // Navegar para o flashcard anterior
+    document.getElementById("prevFlash").addEventListener("click", function () {
+      if (flashcards.length <= 1) return;
+      indiceAtual =
+        (indiceAtual - 1 + flashcards.length) % flashcards.length;
+      // Toda vez que mudar de card, voltamos para frente
+      document.getElementById("flashcard-container").classList.remove("is-flipped");
+      atualizarVisualizacao();
+    });
+
+    // Atualiza a área de exibição de pergunta/resposta
+    function atualizarVisualizacao() {
+      const areaPerg = document.getElementById("perguntaExibida");
+      const areaResp = document.getElementById("respostaExibida");
+
+      if (flashcards.length === 0) {
+        // Se não houver flashcards, exibe texto-padrão e esconde os controles
+        areaPerg.textContent = "Ainda não há flashcards.";
+        areaResp.textContent = "";
+        document.getElementById("prevFlash").style.visibility = "hidden";
+        document.getElementById("nextFlash").style.visibility = "hidden";
+        document.getElementById("excluir-flashcards").disabled = true;
+      } else {
+        // Mostrar controles
+        document.getElementById("prevFlash").style.visibility = "visible";
+        document.getElementById("nextFlash").style.visibility = "visible";
+        document.getElementById("excluir-flashcards").disabled = false;
+
+        const atual = flashcards[indiceAtual];
+        areaPerg.textContent = atual.pergunta;
+        areaResp.textContent = atual.resposta;
+      }
+    }
+  </script>
 </body>
 </html>

@@ -1,60 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
-    <title>FlashStudy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/style.css" />
+  <title>FlashStudy</title>
 </head>
 <body>
-    <header>
-        <!--Menu Hamburguer Para Mobile-->
-        <span class="menu-mobile" onclick="acionarMenu()">☰</span>
-        <h1 id="tituloPrincipal">FlashStudy</h1>
-    </header>
+  <header>
+    <!-- Menu Hamburguer Para Mobile -->
+    <span class="menu-mobile" onclick="acionarMenu()">☰</span>
+    <h1 id="tituloPrincipal">FlashStudy</h1>
+  </header>
 
-    <!--Opções da navegação-->
-    <nav id="MenuDeNavegacao">
-        <ul class="navHan">
-            <li><a href="#" class="navHan">Tema</a></li>
-            <li><a href="#" class="navHan">Ajuda</a></li>
-            <li><a href="#" class="navHan">Contato</a></li>
-            <li><a href="#" class="navHan">Sobre</a></li>
-        </ul>
-    </nav>
+  <!-- Opções da navegação -->
+  <nav id="MenuDeNavegacao">
+    <ul class="navHan">
+      <li><a href="#" class="navHan">Tema</a></li>
+      <li><a href="#" class="navHan">Ajuda</a></li>
+      <li><a href="#" class="navHan">Contato</a></li>
+      <li><a href="#" class="navHan">Sobre</a></li>
+    </ul>
+  </nav>
 
-    <!--Menciona e mostra a Sequência-->
-    <section id="ApresentaSequencia">
-        <h3>SUA SEQUÊNCIA DE ESTUDOS:</h3>
-        <h2>🎯 10 DIAS 🎯</h2>
-    </section>
+  <!-- Seção que mostra a Sequência (exemplo estático) -->
+  <section id="ApresentaSequencia">
+    <h3>SUA SEQUÊNCIA DE ESTUDOS:</h3>
+    <h2>🎯 10 DIAS 🎯</h2>
+  </section>
 
-    <!--Seção principal que adiciona os botões da matéria-->
-    <section id="sectionMain">
-        <h3>Crie seus FLASHCARDS por matéria!</h3>
+  <!-- Seção principal que adiciona os botões de matéria -->
+  <section id="sectionMain">
+    <h3>Crie seus FLASHCARDS por matéria!</h3>
 
-        <div id="formMateria">
-            <label for="NomeMateria" id="labelMateria">Nova Matéria</label>
-            <input type="text" name="Matéria" id="NomeMateria">
-        </div>
+    <div id="formMateria">
+      <label for="NomeMateria" id="labelMateria">Nova Matéria</label>
+      <input
+        type="text"
+        name="Matéria"
+        id="NomeMateria"
+        placeholder="Digite o nome da matéria"
+      />
+    </div>
 
-        <button type="submit" id="addMateria" onclick="addMateria()">Adicionar</button>
+    <button type="button" id="addMateria" onclick="addMateria()">
+      Adicionar
+    </button>
 
-        <!--Container onde os botões-matérias serão inseridos-->
-        <section id="materias-container">
-            
-        </section>
-    </section>
+    <!-- Container onde os botões-matérias serão inseridos -->
+    <section id="materias-container"></section>
+  </section>
 
-    <footer>
-        <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
-    </footer>
+  <footer>
+    <p><a href="#">&copy; FlashStudy By Gustavo</a></p>
+  </footer>
 
-    <script src="../scripts/menuMobile.js"></script>
+  <!-- Scripts -->
+  <script src="../scripts/menuMobile.js"></script>
+  <script>
+    // Função para criar um novo card de matéria dentro de #materias-container
+    function addMateria() {
+      const nomeInput = document.getElementById("NomeMateria");
+      const nome = nomeInput.value.trim();
+      if (!nome) {
+        alert("Por favor, digite um nome para a matéria.");
+        return;
+      }
 
-    <!-- Inclusão de armazenamento.js para gerenciar localStorage -->
-    <script src="../scripts/armazenamento.js" defer></script>
-    <!-- Inclusão de materias.js para criar/excluir matérias -->
-    <script src="../scripts/addMaterias.js" defer></script>
+      // Cria o elemento que envolve botão e ícone de exclusão
+      const container = document.createElement("div");
+      container.classList.add("materia-item");
+
+      // Botão que abre a página de flashcards (materia.html)
+      const btnMat = document.createElement("button");
+      btnMat.classList.add("materia-atalho");
+      btnMat.textContent = nome;
+      // Ao clicar, leva para materia.html e armazena o nome no sessionStorage
+      btnMat.onclick = function () {
+        sessionStorage.setItem("materiaSelecionada", nome);
+        window.location.href = "materia.html";
+      };
+
+      // Ícone de exclusão
+      const btnExcluir = document.createElement("button");
+      btnExcluir.classList.add("excluir-materia");
+      btnExcluir.textContent = "✖";
+      btnExcluir.onclick = function () {
+        if (confirm(`Deseja excluir a matéria "${nome}"?`)) {
+          container.remove();
+        }
+      };
+
+      // Agrupa tudo
+      container.appendChild(btnMat);
+      container.appendChild(btnExcluir);
+      document.getElementById("materias-container").appendChild(container);
+
+      // Limpa o campo
+      nomeInput.value = "";
+    }
+  </script>
 </body>
 </html>

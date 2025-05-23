@@ -87,108 +87,143 @@ header h1 {
   margin: 2rem auto;
   border-radius: 10px;
   box-shadow: 1px 2px 10px 1px black;
-  display: inline;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-items: center;
   align-items: center;
   padding: 1rem;
 }
 
-h2{
-    font-family: var(--fonte-01principal);
-    font-size: 40px;
-    text-align: center;
+h2 {
+  font-family: var(--fonte-01principal);
+  font-size: 40px;
+  text-align: center;
 }
 
-#estudos{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:auto;
-    background-color: #ffffff;
-    padding:30px;
-    position: relative;
+h3 {
+  font-family: var(--fonte-01principal);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-#Flashcards1{
-    display: none;
-    background-color: #000;
-    padding: 130px 100px;
-    max-height: 20%;
-    max-height: 20%;
-    margin: 20px;
-    border-radius: 10px;
+/* Container que envolve setas e o card */
+#estudos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
-#Flashcards2{
-    display: block;
-    background-color: #000;
-    padding: 130px 100px;
-    max-height: 20%;
-    max-height: 20%;
-    margin: 20px;
-    border-radius: 10px;
+/* Botões de navegação ‹ › */
+.mudarFlashcard {
+  color: #484848;
+  font-weight: bolder;
+  font-size: 60px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.mudarFlashcard:hover {
+  color: #000872;
 }
 
-#pergunta{
-    color: #fff;
-    font-size: 15px;
+/* ========== ESTRUTURA DO CARD ========== */
+.card {
+  perspective: 1000px; /* Permite efeito 3D */
+  width: 320px;
+  height: 240px;
 }
-#resposta{
-    color: #fff;
-    font-size: 15px;
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
 }
-
-#conteudo{
-    color: #fff;
-    transform: translateY(1100%); /* move o próprio elemento 50% para cima */
-    font-size: 10px;
-    text-align: center;
-}
-
-.mudarFlashcard{
-    color: #484848;
-    font-weight: bolder;
-    font-size: 120px;
-    margin: 0;
-    transform: translateY(-10%); /* move o próprio elemento 50% para cima */
+.card.is-flipped .card-inner {
+  transform: rotateY(180deg);
 }
 
-.mudarFlashcard:hover{
-    color: #000872;
-    cursor: pointer;
+/* Cada face do card (frente e verso) */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.mudarFlashcard{
-    font-weight: bolder;
-    font-size: 120px;
-    transform: translateY(-10%); /* move o próprio elemento 50% para cima */
+/* Frente: fundo escuro e texto branco */
+.card-front {
+  background-color: #000;
+}
+.card-front p {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding: 1rem;
 }
 
-#excluir-flashcards{
-    background-color: rgba(255, 0, 0, 0.381);
-    border: 3px solid #000000;
-    border-radius: 10px;
-    padding: 10px;
+/* Verso: fundo azul claro e texto preto */
+.card-back {
+  background-color: #46ebdc;
+  transform: rotateY(180deg);
+}
+.card-back p {
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  padding: 1rem;
 }
 
-#excluir-flashcards:hover{
-    background-color: rgba(255, 0, 0, 0.664);
+/****************************************/
+/*     BOTÕES DE ADICIONAR/REMOVER      */
+/****************************************/
+#excluir-flashcards {
+  background-color: rgba(255, 0, 0, 0.381);
+  border: 3px solid #000000;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+#excluir-flashcards:hover {
+  background-color: rgba(255, 0, 0, 0.664);
 }
 
-#addFlashcards{
-    background-color: rgba(0, 149, 2, 0.381);
-    border: 3px solid #000000;
-    border-radius: 10px;
-    padding: 10px;
+#addFlashcards {
+  background-color: rgba(0, 149, 2, 0.381);
+  border: 3px solid #000000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#addFlashcards:hover {
+  background-color: rgba(0, 149, 2, 0.664);
 }
 
-#addFlashcards:hover{
-    background-color: rgba(0, 149, 2, 0.664);
+/****************************************/
+/*           FORMULÁRIO DE INPUT        */
+/****************************************/
+.form-group {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
 }
-
-
+.form-group input {
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+.form-group label {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
 
 /****************************************/
 /*               CSS FOOTER             */
@@ -211,4 +246,48 @@ footer p a {
   font-size: 14px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* TABLET: >698px – design original */
+@media (min-width: 698px) {
+  #MenuDeNavegacao {
+    background-color: transparent;
+    margin-top: 10px;
+    display: flex;
+  }
+  #MenuDeNavegacao li {
+    height: 15px;
+    display: inline;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  #MenuDeNavegacao li:hover {
+    background-color: var(--cor-1P-hover);
+    border-radius: 70px;
+    border: 1px solid black;
+  }
+  .navHan {
+    margin: 0 auto;
+  }
+  .menu-mobile {
+    display: none;
+  }
+  .sectionMain {
+    width: 90vh;
+    margin-top: 3vh;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* DESKTOP: >=1024px – mesma estrutura */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .sectionMain {
+    margin-top: 3vh;
+  }
 }
