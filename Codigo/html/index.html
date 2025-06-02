@@ -57,6 +57,7 @@
 
   <!-- Scripts -->
   <script src="../scripts/menuMobile.js"></script>
+  <script src="../scripts/percistencia.js"></script>
   <script>
     // Função para criar um novo card de matéria dentro de #materias-container
     function addMateria() {
@@ -75,12 +76,6 @@
       const btnMat = document.createElement("button");
       btnMat.classList.add("materia-atalho");
       btnMat.textContent = nome;
-      // Ao clicar, leva para materia.html e armazena o nome no sessionStorage
-      btnMat.onclick = function () {
-        sessionStorage.setItem("materiaSelecionada", nome);
-        window.location.href = "materia.html";
-      };
-
       // Ícone de exclusão
       const btnExcluir = document.createElement("button");
       btnExcluir.classList.add("excluir-materia");
